@@ -1,0 +1,45 @@
+﻿using System.Data;
+using System.Data.SqlClient;
+using To_Do_List_Backend.Domain;
+using To_Do_List_Backend.Repositories;
+using todo_list_Backend.Infrastructure;
+
+namespace todo_list_Backend.Repositories
+{
+    public class TodoRepository : ITodoRepository
+    {
+        private readonly TodoDbContext _dbContext;
+
+        public TodoRepository(TodoDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+        public List<Todo> GetTodos()
+        {
+            return _dbContext.Set<Todo>().ToList();
+        }
+
+        public Todo? Get(int id)
+        {
+            return _dbContext.Set<Todo>().FirstOrDefault(x => x.Id == id);
+        }
+
+        public Todo Create(Todo todo)
+        {
+            var entity = _dbContext.Set<Todo>().Add(todo);
+            return entity.Entity;
+        }
+
+        public void Delete(int id)
+        {
+            Todo todo = Get(id);
+            Console.WriteLine(todo);
+            _dbContext.Set<Todo>().Remove(todo);
+        }
+
+        public void Update(Todo todo)
+        {
+            var entity = _dbContext.Update(todo);
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "f40c714d-d078-4731-9dc8-ab8b2baaf9d6": {
+      "ProjectGuid": "f40c714d-d078-4731-9dc8-ab8b2baaf9d6",
+      "DisplayName": "todo-list-Backend",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

@@ -1,0 +1,72 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+.task
+{
+    background: gray;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    max-width: 600px;
+    min-width: 300px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.task__title
+{
+    font: normal 600 32px 'Roboto';
+}
+
+.task__subtitel
+{
+    font: normal 600 24px 'Roboto';
+}
+
+.task__list
+{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+.task__lists
+{
+    border-bottom: solid 1px black;
+}
+
+.button
+{
+    display: inline-block;	
+	box-sizing: border-box;
+	padding: 0 15px;
+	margin: 10px;
+	outline: none;
+	border: 1px solid #fff;
+	border-radius: 50px;
+	line-height: 46px;
+	font-size: 14px;
+	color: #444;
+	background-color: #fff;
+	box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
+	cursor: pointer;
+}
+
+form input
+{
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}

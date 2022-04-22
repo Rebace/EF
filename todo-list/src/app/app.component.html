@@ -1,0 +1,28 @@
+<div class="task"
+*ngIf="!visibility">
+  <p class="task__title">To do:</p>
+  <div class="task__lists">
+    <app-item class="task__list"
+    *ngFor="let task of tasks"
+    [task]="task"
+    (onDeleteTask)="onDelete($event)"
+    (addCheckTask)="addCheckTask($event)"
+    ></app-item>
+  </div>
+  <p class="task__subtitel">Task</p>
+  <form #myForm="ngForm">
+    <input ngModel name="task" type="text" placeholder="Введите задачу">
+    <button class="button" (click)="addTask(myForm)">Add item</button>
+  </form>
+</div>
+
+<div class="task"
+*ngIf="visibility">
+  <p class="task__title">Completed tasks:</p>
+  <app-check class="task__list"
+  *ngFor="let checkTask of checkTasks"
+  [task]="checkTask"
+  (onDeleteTask)="onDelete($event)"
+  ></app-check>
+</div>
+<button class="button" (click)="changingVisibility()">Смена</button>
