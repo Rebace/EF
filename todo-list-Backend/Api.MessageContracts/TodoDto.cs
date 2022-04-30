@@ -4,17 +4,20 @@ namespace To_Do_List_Backend.Dto
 {
     public class TodoDto
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public bool IsDone { get; set; }
+    }
 
-        public Todo ToTodo()
+    static class ToTodo
+    {
+        public static Todo Map(this TodoDto todoDto)
         {
             return new Todo
             {
-                Id = 0,
-                Title = Title,
-                IsDone = IsDone,
+                Id = todoDto.Id,
+                Title = todoDto.Title,
+                IsDone = todoDto.IsDone
             };
         }
     }

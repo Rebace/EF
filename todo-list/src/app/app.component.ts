@@ -72,22 +72,22 @@ export class AppComponent {
   }
 
   onDelete(id: number): void{
-    this.taskService.Delete(id);
 
     let task: Task;
 
-    this.taskService.Get(id).subscribe(
+    this.taskService.GetById(id).subscribe(
       (value) =>
       {
         task = <Task>(value);
-        if (task!.isDone)
+        this.taskService.Delete(task);
+        if (task.isDone)
         {
           this.tasks.splice(this.tasks.findIndex(task => task.id == id), 1);
         }
         else
         {
           this.checkTasks.splice(this.checkTasks.findIndex(task => task.id == id), 1);
-        }
+        }        
       }
     )
   }

@@ -14,12 +14,12 @@ namespace todo_list_Backend.Repositories
         {
             _dbContext = dbContext;
         }
-        public List<Todo> GetTodos()
+        public List<Todo> GetTodoList()
         {
             return _dbContext.Set<Todo>().ToList();
         }
 
-        public Todo? Get(int id)
+        public Todo? GetById(int id)
         {
             return _dbContext.Set<Todo>().FirstOrDefault(x => x.Id == id);
         }
@@ -30,16 +30,14 @@ namespace todo_list_Backend.Repositories
             return entity.Entity;
         }
 
-        public void Delete(int id)
+        public void Delete(Todo todo)
         {
-            Todo todo = Get(id);
-            Console.WriteLine(todo);
             _dbContext.Set<Todo>().Remove(todo);
         }
 
         public void Update(Todo todo)
         {
-            var entity = _dbContext.Update(todo);
+            _dbContext.Update(todo);
         }
     }
 }

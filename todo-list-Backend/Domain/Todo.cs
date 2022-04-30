@@ -7,14 +7,17 @@ namespace To_Do_List_Backend.Domain
         public int Id { get; set; }
         public string Title { get; set; }
         public bool IsDone { get; set; }
+    }
 
-        public TodoDto ToTodoDto()
+    static class ToTodoDto
+    {
+        public static TodoDto Map(this Todo todo)
         {
             return new TodoDto
             {
-                Id = Id,
-                Title = Title,
-                IsDone = IsDone
+                Id = todo.Id,
+                Title = todo.Title,
+                IsDone = todo.IsDone
             };
         }
     }

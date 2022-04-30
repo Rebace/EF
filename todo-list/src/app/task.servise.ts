@@ -14,7 +14,7 @@ export class TaskService
         return this.http.get(`${this._todoControllerLink}get-all`);
     }
 
-    public Get(taskId: number)
+    public GetById(taskId: number)
     {
         return this.http.get(`${this._todoControllerLink}${taskId}`);
     }
@@ -29,8 +29,8 @@ export class TaskService
         this.http.put(`${this._todoControllerLink}${taskId}/complete`, {}).subscribe();
     }
 
-    public Delete(taskId: number)
+    public Delete(task: Task)
     {
-        this.http.delete(`${this._todoControllerLink}${taskId}/delete`).subscribe();
+        this.http.request('delete', `${this._todoControllerLink}${task}/delete`, { body: task }).subscribe();
     }
 }

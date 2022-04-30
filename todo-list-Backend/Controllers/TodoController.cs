@@ -23,23 +23,27 @@ namespace todo_list_Backend.Controllers
         [Route("get-all")]
         public IActionResult GetAll()
         {
-            List<Todo> todos = _todoRepository.GetTodos();
-            return Ok(todos.Select(x => x.ToTodoDto()));
+            List<Todo> todos = _todoRepository.GetTodoList();
+            return Ok(todos.Select(x => x.Map()));
         }
 
         [HttpGet]
         [Route("{todoId}")]
-        public IActionResult Get(int todoId)
+        public IActionResult GetById(int todoId)
         {
-            Todo? todo = _todoRepository.Get(todoId);
-            return Ok(todo.ToTodoDto());
+            Todo? todo = _todoRepository.GetById(todoId);
+            if (todo == null)
+            {
+                return NotFound();
+            }
+            return Ok(todo.Map());
         }
 
         [HttpPost]
         [Route("create")]
         public IActionResult Create([FromBody] TodoDto todoDto)
         {
-            var createdTodo = _todoRepository.Create(todoDto.ToTodo());
+            var createdTodo = _todoRepository.Create(todoDto.Map());
 
             _unitOfWork.Commit();
 
@@ -52,20 +56,20 @@ namespace todo_list_Backend.Controllers
         {
             Console.WriteLine(todoId);
 
-            Todo? comletedTodo = _todoRepository.Get(todoId);
+            Todo? comletedTodo = _todoRepository.GetById(todoId);
             comletedTodo.IsDone = false;
             _todoRepository.Update(comletedTodo);
 
             _unitOfWork.Commit();
 
-            return Ok(comletedTodo.ToTodoDto());
+            return Ok(comletedTodo.Map());
         }
 
         [HttpDelete]
-        [Route("{todoId}/delete")]
-        public IActionResult Delete(int todoId)
+        [Route("{todo}/delete")]
+        public IActionResult Delete([FromBody] TodoDto todoDto)
         {
-            _todoRepository.Delete(todoId);
+            _todoRepository.Delete(todoDto.Map());
 
             _unitOfWork.Commit();
 
