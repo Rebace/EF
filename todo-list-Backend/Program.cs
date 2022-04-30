@@ -5,24 +5,6 @@ using todo_list_Backend;
 using todo_list_Backend.Infrastructure;
 using todo_list_Backend.Repositories;
 using todo_list_Backend.UnitOfWorks;
-/*
-namespace todo_list_Backend
-{
-public class Program
-{
-public static void Main(string[] args)
-{
-CreateHostBuilder(args).Build().Run();
-}
-
-public static IHostBuilder CreateHostBuilder(string[] args) =>
-Host.CreateDefaultBuilder(args)
-.ConfigureWebHostDefaults(webBuilder =>
-{
-webBuilder.UseStartup<Startup>();
-});
-}
-}*/
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
