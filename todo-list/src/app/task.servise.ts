@@ -29,8 +29,8 @@ export class TaskService
         this.http.put(`${this._todoControllerLink}${taskId}/complete`, {}).subscribe();
     }
 
-    public Delete(task: Task)
+    public Delete(taskId: number)
     {
-        this.http.request('delete', `${this._todoControllerLink}${task}/delete`, { body: task }).subscribe();
+        this.http.request('delete', `${this._todoControllerLink}${taskId}/delete`).subscribe();
     }
 }

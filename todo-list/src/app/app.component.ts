@@ -73,13 +73,13 @@ export class AppComponent {
 
   onDelete(id: number): void{
 
-    let task: Task;
+    this.taskService.Delete(id);
 
+    let task: Task;
     this.taskService.GetById(id).subscribe(
       (value) =>
       {
         task = <Task>(value);
-        this.taskService.Delete(task);
         if (task.isDone)
         {
           this.tasks.splice(this.tasks.findIndex(task => task.id == id), 1);

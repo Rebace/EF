@@ -2,6 +2,7 @@
 using To_Do_List_Backend.Domain;
 using To_Do_List_Backend.Dto;
 using To_Do_List_Backend.Repositories;
+using todo_list_Backend.Api.MessageContracts.Mappers;
 using todo_list_Backend.UnitOfWorks;
 
 namespace todo_list_Backend.Controllers
@@ -54,8 +55,6 @@ namespace todo_list_Backend.Controllers
         [Route("{todoId}/complete")]
         public IActionResult Complete(int todoId)
         {
-            Console.WriteLine(todoId);
-
             Todo? comletedTodo = _todoRepository.GetById(todoId);
             comletedTodo.IsDone = false;
             _todoRepository.Update(comletedTodo);
@@ -66,14 +65,23 @@ namespace todo_list_Backend.Controllers
         }
 
         [HttpDelete]
-        [Route("{todo}/delete")]
-        public IActionResult Delete([FromBody] TodoDto todoDto)
+        [Route("{todoId}/delete")]
+        public IActionResult Delete(int todoId)
         {
-            _todoRepository.Delete(todoDto.Map());
+            Todo? todo = _todoRepository.GetById(todoId);
 
-            _unitOfWork.Commit();
+            if (todo == null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                _todoRepository.Delete(todo);
 
-            return NoContent();
+                _unitOfWork.Commit();
+
+                return NoContent();
+            }
         }
     }
 }
