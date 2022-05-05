@@ -10,9 +10,9 @@
     ></app-item>
   </div>
   <p class="task__subtitel">Task</p>
-  <form #myForm="ngForm">
+  <form #Form="ngForm">
     <input ngModel name="task" type="text" placeholder="Введите задачу">
-    <button class="button" (click)="addTask(myForm)">Add item</button>
+    <button class="button" (click)="addTask(Form)">Add item</button>
   </form>
 </div>
 
@@ -25,4 +25,4 @@
   (onDeleteTask)="onDelete($event)"
   ></app-check>
 </div>
-<button class="button" (click)="changingVisibility()">Смена</button>
+<button class="button" (click)="changeVisibility()">Смена</button>

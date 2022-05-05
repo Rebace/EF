@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
 import { Task } from './task.interface';
-import { TaskService } from './task.servise';
+import { TaskService } from './task.service';
 
 @Component({
   selector: 'app-root',
@@ -37,14 +37,14 @@ export class AppComponent {
     });
   }
   
-  addTask(myForm: NgForm): void{
-    if ((myForm.value.task.length < 1) && (!myForm.value.task))
+  addTask(Form: NgForm): void{
+    if ((Form.value.task.length < 1) && (!Form.value.task))
     {
       return;
     }
     let task = {
       id: 0,
-      title: myForm.value.task,
+      title: Form.value.task,
       isDone: true
     }
     this.taskService.Create(task).subscribe(
@@ -57,7 +57,7 @@ export class AppComponent {
         });
       }
     );
-    myForm.reset();
+    Form.reset();
   }
 
   addCheckTask(id: number): void{
@@ -92,7 +92,7 @@ export class AppComponent {
     )
   }
 
-  changingVisibility(): void{
+  changeVisibility(): void{
     this.visibility = !this.visibility;
   }
 }

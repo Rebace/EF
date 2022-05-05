@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ItemComponent } from './item/item.component';
 import { CheckComponent } from './check/check.component';
-import { TaskService } from './task.servise';
+import { TaskService } from './task.service';
 
 @NgModule({
   declarations: [

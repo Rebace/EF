@@ -19,7 +19,7 @@ namespace todo_list_Backend.Repositories
             return _dbContext.Set<Todo>().ToList();
         }
 
-        public Todo? GetById(int id)
+        public Todo GetById(int id)
         {
             return _dbContext.Set<Todo>().FirstOrDefault(x => x.Id == id);
         }

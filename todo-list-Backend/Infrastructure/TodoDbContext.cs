@@ -11,7 +11,7 @@ namespace todo_list_Backend.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new TodoConfiguration());
+            modelBuilder.ApplyConfiguration(new TodoMap());
         }
     }
 }

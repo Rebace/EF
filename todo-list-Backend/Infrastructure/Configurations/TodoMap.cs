@@ -4,7 +4,7 @@ using To_Do_List_Backend.Domain;
 
 namespace todo_list_Backend.Infrastructure.Configurations
 {
-    public class TodoConfiguration : IEntityTypeConfiguration<Todo>
+    public class TodoMap : IEntityTypeConfiguration<Todo>
     {
         public void Configure(EntityTypeBuilder<Todo> builder)
         {

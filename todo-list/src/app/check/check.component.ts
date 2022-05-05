@@ -7,10 +7,10 @@ import { Task } from '../task.interface';
   styleUrls: ['./check.component.css']
 })
 export class CheckComponent {
-  @Input() task?: Task; 
+  @Input() task!: Task; 
   @Output() onDeleteTask = new EventEmitter();
 
   delete(): void{
-    this.onDeleteTask.emit(this.task!.id as number);
+    this.onDeleteTask.emit(this.task.id as number);
   }
 }
